@@ -41,8 +41,18 @@ public class BookController {
       return "book/new.jsp";
     } else {
       bookService.addBook(book);
-      return "redirect:/book";
+      return "redirect:/home";
     }
+  }
+
+  //!Read My Books
+  @GetMapping("/my/books")
+    public String myBooks(Model model, HttpSession session) {
+    if (session.getAttribute("userId") == null) {
+      return "redirect:/logout";
+    }
+    model.addAttribute("books", bookService.getAll());
+    return "book/myBook.jsp";
   }
 
   //! Read All

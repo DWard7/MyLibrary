@@ -110,7 +110,7 @@ pageEncoding="UTF-8"%>
       <div class="sm:hidden" id="mobile-menu">
         <div class="space-y-1 pt-2 pb-4">
           <a
-            href="/my/books"
+            href="/show"
             class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
             >My Books
           </a>
@@ -132,57 +132,61 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
     </nav>
-    <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-      <div class="border-t border-gray-200 mt-5">
-        <dl>
-          <div
-            class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-          >
-            <dt class="text-sm font-medium text-gray-500">Title</dt>
-            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              ${book.title}
-            </dd>
-          </div>
-          <div
-            class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-          >
-            <dt class="text-sm font-medium text-gray-500">Author</dt>
-            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              ${book.author}
-            </dd>
-          </div>
-          <div
-            class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-          >
-            <dt class="text-sm font-medium text-gray-500">Description</dt>
-            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              ${book.description}
-            </dd>
-          </div>
-          <div
-            class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-          >
-            <dt class="text-sm font-medium text-gray-500">Genre</dt>
-            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              ${book.genre}
-            </dd>
-          </div>
-          <c:if test="${book.user.id == userId}">
-            <div
-              class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-            >
-              <a href="/book/${book.id}/edit"
-                ><button
-                  type="button"
-                  class="rounded-md bg-blue-700 py-1.5 px-2.5 text-md font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
-                >
-                  Edit
-                </button>
-              </a>
-            </div>
-          </c:if>
-        </dl>
+    <c:forEach var="book" items="${books}">
+      <c:if test="${book.user.id == userId}">
+        <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+          <div class="border-t border-gray-200 mt-5">
+            <dl>
+              <div
+                class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+              >
+                <dt class="text-sm font-medium text-gray-500">Title</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                  ${book.title}
+                </dd>
+              </div>
+              <div
+                class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+              >
+                <dt class="text-sm font-medium text-gray-500">Author</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                  ${book.author}
+                </dd>
+              </div>
+              <div
+                class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+              >
+                <dt class="text-sm font-medium text-gray-500">Description</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                  ${book.description}
+                </dd>
+              </div>
+              <div
+                class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+              >
+                <dt class="text-sm font-medium text-gray-500">Genre</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                  ${book.genre}
+                </dd>
+              </div>
+      </c:if>
+          </c:forEach>
+            <c:if test="${book.user.id == userId}">
+              <div
+                class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+              >
+                <a href="/book/${book.id}/edit"
+                  ><button
+                    type="button"
+                    class="rounded-md bg-blue-700 py-1.5 px-2.5 text-md font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+                  >
+                    Edit
+                  </button>
+                </a>
+              </div>
+            </c:if>
+          </dl>
+        </div>
       </div>
-    </div>
   </body>
 </html>

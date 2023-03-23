@@ -35,6 +35,9 @@ public class Book {
   @NotNull(message = "Book Code required.")
   private Integer bookCode;
 
+  @NotEmpty(message = "Description required.")
+  @Size(min = 10, max = 225, message = "Description must be atleast 10 characters.")
+  private String description;
 
 
   @ManyToOne(fetch = FetchType.LAZY)
@@ -49,7 +52,7 @@ public class Book {
     String author,
     String genre,
     Integer bookCode,
-
+    String description,
     User user
   ) {
     this.id = id;
@@ -57,10 +60,17 @@ public class Book {
     this.author = author;
     this.genre = genre;
     this.bookCode = bookCode;
-
+    this.description = description;
     this.user = user;
   }
 
+  public String getDescription() {
+    return this.description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
   public User getUser() {
     return this.user;

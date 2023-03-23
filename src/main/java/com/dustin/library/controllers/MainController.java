@@ -19,11 +19,11 @@ public class MainController {
   @Autowired
   private UserService userService;
 
-  @GetMapping("/")
-  public String index(Model model) {
+  @GetMapping("/register/account")
+  public String register(Model model) {
     model.addAttribute("newUser", new User());
     model.addAttribute("newLogin", new LoginUser());
-    return "index.jsp";
+    return "register.jsp";
   }
 
   @PostMapping("/register")
@@ -42,6 +42,13 @@ public class MainController {
     session.setAttribute("userName", user.getUserName());
     session.setAttribute("firstName", user.getFirstName());
     return "redirect:/home";
+  }
+
+  @GetMapping("/")
+  public String index(Model model) {
+    model.addAttribute("newUser", new User());
+    model.addAttribute("newLogin", new LoginUser());
+    return "index.jsp";
   }
 
   @PostMapping("/login")
