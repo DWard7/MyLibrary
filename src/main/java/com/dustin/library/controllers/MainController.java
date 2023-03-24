@@ -1,8 +1,10 @@
 package com.dustin.library.controllers;
 
 import com.dustin.library.models.LoginUser;
+
 import com.dustin.library.models.User;
 import com.dustin.library.services.UserService;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,6 @@ public class MainController {
       return "index.jsp";
     }
     session.setAttribute("userId", user.getId());
-    session.setAttribute("userName", user.getUserName());
     session.setAttribute("firstName", user.getFirstName());
     return "redirect:/home";
   }
@@ -65,7 +66,6 @@ public class MainController {
       return "index.jsp";
     }
     session.setAttribute("userId", user.getId());
-    session.setAttribute("userName", user.getUserName());
     session.setAttribute("firstName", user.getFirstName());
     return "redirect:/home";
   }

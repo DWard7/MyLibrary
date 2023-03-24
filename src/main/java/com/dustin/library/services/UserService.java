@@ -1,15 +1,13 @@
 package com.dustin.library.services;
 
+import com.dustin.library.models.LoginUser;
+import com.dustin.library.models.User;
+import com.dustin.library.repositories.UserRepository;
 import java.util.Optional;
-
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
-
-import com.dustin.library.models.LoginUser;
-import com.dustin.library.models.User;
-import com.dustin.library.repositories.UserRepository;
 
 @Service
 public class UserService {
@@ -18,7 +16,7 @@ public class UserService {
   private UserRepository userRepository;
 
   public User register(User newUser, BindingResult result) {
-    Optional<User> user=userRepository.findByEmail(newUser.getEmail());
+    Optional<User> user = userRepository.findByEmail(newUser.getEmail());
     if (user.isPresent()) {
       result.rejectValue("email", "email", "Email already registered.");
     }
@@ -40,11 +38,13 @@ public class UserService {
     if (result.hasErrors()) {
       return null;
     }
-    User user = userRepository.findByEmail(newLoginObject.getEmail()).orElse(null);
-    if(!BCrypt.checkpw(newLoginObject.getPassword(), user.getPassword())){
+    User user = userRepository
+      .findByEmail(newLoginObject.getEmail())
+      .orElse(null);
+    if (!BCrypt.checkpw(newLoginObject.getPassword(), user.getPassword())) {
       result.rejectValue("password", "Password", "Invalid Credentials");
     }
-    if(result.hasErrors()){
+    if (result.hasErrors()) {
       return null;
     }
     return user;

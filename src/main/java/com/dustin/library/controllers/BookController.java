@@ -21,7 +21,7 @@ import com.dustin.library.services.BookService;
 public class BookController {
 
   @Autowired
-  BookService bookService;
+  private BookService bookService;
 
   //! Create Book
   @GetMapping("/book/new")
@@ -92,7 +92,7 @@ public class BookController {
     }
     Book book = bookService.getOne(id);
     model.addAttribute("book", book);
-    return "book/edite.jsp";
+    return "book/edit.jsp";
   }
 
   @PutMapping("/book/{id}")
@@ -117,4 +117,5 @@ public class BookController {
     bookService.deleteName(id);
     return "redirect:/home";
   }
+
 }

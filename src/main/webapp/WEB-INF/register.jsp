@@ -12,7 +12,7 @@ pageEncoding="UTF-8"%>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Library Management</title>
+    <title>MyLibrary</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <!-- change to match your file/naming structure -->
@@ -23,21 +23,21 @@ pageEncoding="UTF-8"%>
   </head>
   <div class="flex min-h-full">
     <div
-      class="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
+      class="flex flex-1 flex-col justify-center pt-1 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
     >
       <div class="mx-auto w-full max-w-sm lg:w-96">
         <div>
           <h1 class="flex justify-center text-3xl font-bold tracking-tight text-gray-900">
             MyLibrary
           </h1>
-          <h2 class="mt-2 flex justify-center text-2xl font-bold tracking-tight text-gray-900">
+          <h2 class="flex justify-center text-2xl font-bold tracking-tight text-gray-900">
             Register your account
           </h2>
           </p>
         </div>
-        <div class="mt-8">
-          <div class="mt-6">
-            <form:form action="/register" method="post" modelAttribute="newUser" class="space-y-6">
+        <div class="mt-3">
+          <div class="mt-3">
+            <form:form action="/register" method="post" modelAttribute="newUser" class="space-y-3">
               <div>
                 <form:label
                   path="firstName"
@@ -49,7 +49,7 @@ pageEncoding="UTF-8"%>
                     path="firstName"
                     id="firstName"
                     name="firstName"
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   <form:errors path="firstName" />
                 </div>
@@ -65,7 +65,7 @@ pageEncoding="UTF-8"%>
                     path="lastName"
                     id="lastName"
                     name="lastName"
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   <form:errors path="lastName" />
                 </div>
@@ -81,25 +81,9 @@ pageEncoding="UTF-8"%>
                     path="phoneNumber"
                     id="phoneNumber"
                     name="phoneNumber"
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   <form:errors path="phoneNumber" />
-                </div>
-              </div>
-              <div>
-                <form:label
-                  path="userName"
-                  class="block text-sm font-medium leading-6 text-gray-900"
-                  >User Name</form:label
-                >
-                <div class="mt-2">
-                  <form:input
-                    path="userName"
-                    id="userName"
-                    name="userName"
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                  <form:errors path="userName" />
                 </div>
               </div>
               <div>
@@ -115,7 +99,7 @@ pageEncoding="UTF-8"%>
                     name="email"
                     type="email"
                     autocomplete="email"
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   <form:errors path="email" />
                 </div>
@@ -133,7 +117,7 @@ pageEncoding="UTF-8"%>
                     name="password"
                     type="password"
                     autocomplete="current-password"
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   <form:errors path="password" />
                 </div>
@@ -151,7 +135,7 @@ pageEncoding="UTF-8"%>
                     name="confirm"
                     type="password"
                     autocomplete="current-"
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   <form:errors path="confirm" />
                 </div>

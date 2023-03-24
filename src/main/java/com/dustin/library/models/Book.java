@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -32,13 +31,15 @@ public class Book {
   @Size(min = 3, message = "Genre must be atleast 3 characters.")
   private String genre;
 
-  @NotNull(message = "Book Code required.")
-  private Integer bookCode;
-
   @NotEmpty(message = "Description required.")
-  @Size(min = 10, max = 225, message = "Description must be atleast 10 characters.")
+  @Size(
+    min = 10,
+    max = 225,
+    message = "Description must be atleast 10 characters."
+  )
   private String description;
 
+  private String thoughts;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")
@@ -53,15 +54,24 @@ public class Book {
     String genre,
     Integer bookCode,
     String description,
+    String thoughts,
     User user
   ) {
     this.id = id;
     this.title = title;
     this.author = author;
     this.genre = genre;
-    this.bookCode = bookCode;
     this.description = description;
+    this.thoughts = thoughts;
     this.user = user;
+  }
+
+  public String getThoughts() {
+    return this.thoughts;
+  }
+
+  public void setThoughts(String thoughts) {
+    this.thoughts = thoughts;
   }
 
   public String getDescription() {
@@ -111,13 +121,4 @@ public class Book {
   public void setGenre(String genre) {
     this.genre = genre;
   }
-
-  public Integer getBookCode() {
-    return this.bookCode;
-  }
-
-  public void setBookCode(Integer bookCode) {
-    this.bookCode = bookCode;
-  }
-
 }

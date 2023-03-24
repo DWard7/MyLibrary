@@ -2,7 +2,6 @@ package com.dustin.library.models;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +16,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -43,14 +41,6 @@ public class User {
     message = "Last name must be between 2-15 characters"
   )
   private String lastName;
-
-  @NotEmpty(message = "Username is required")
-  @Size(
-    min = 3,
-    max = 30,
-    message = "Username must be between 3 and 30 characters"
-  )
-  private String userName;
 
   @NotEmpty(message = "Email is required")
   @Email(message = "Please enter a valid email")
@@ -84,17 +74,26 @@ public class User {
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date updatedAt;
 
-  @OneToMany(mappedBy = "user", fetch =FetchType.LAZY)
+  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
   private List<Book> books;
 
   public User() {}
 
-
-  public User(Long id, String firstName, String lastName, String userName, String email, Integer phoneNumber, String password, String confirm, Date createdAt, Date updatedAt, List<Book> books) {
+  public User(
+    Long id,
+    String firstName,
+    String lastName,
+    String email,
+    Integer phoneNumber,
+    String password,
+    String confirm,
+    Date createdAt,
+    Date updatedAt,
+    List<Book> books
+  ) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.userName = userName;
     this.email = email;
     this.phoneNumber = phoneNumber;
     this.password = password;
@@ -104,23 +103,13 @@ public class User {
     this.books = books;
   }
 
-
-  public Integer getPhoneNumber() {
-    return this.phoneNumber;
+  public Long getId() {
+    return this.id;
   }
 
-  public void setPhoneNumber(Integer phoneNumber) {
-    this.phoneNumber = phoneNumber;
+  public void setId(Long id) {
+    this.id = id;
   }
-
-  public List<Book> getBooks() {
-    return this.books;
-  }
-
-  public void setBooks(List<Book> books) {
-    this.books = books;
-  }
-
 
   public String getFirstName() {
     return this.firstName;
@@ -138,28 +127,20 @@ public class User {
     this.lastName = lastName;
   }
 
-  public Long getId() {
-    return this.id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getUserName() {
-    return this.userName;
-  }
-
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
-
   public String getEmail() {
     return this.email;
   }
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public Integer getPhoneNumber() {
+    return this.phoneNumber;
+  }
+
+  public void setPhoneNumber(Integer phoneNumber) {
+    this.phoneNumber = phoneNumber;
   }
 
   public String getPassword() {
@@ -192,5 +173,13 @@ public class User {
 
   public void setUpdatedAt(Date updatedAt) {
     this.updatedAt = updatedAt;
+  }
+
+  public List<Book> getBooks() {
+    return this.books;
+  }
+
+  public void setBooks(List<Book> books) {
+    this.books = books;
   }
 }
